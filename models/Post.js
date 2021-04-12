@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     Post.associate = (models) => {
-        //relaçao de varios post para um usuario (N-1)
-        Post.belongsTo(models.Usuario, {as: "usuario", foreingKey: "usuarios_id"});
+        // relação N:1 (vários posts de 1 usuario)
+        Post.belongsTo(models.Usuario, { as: "usuario", foreignKey: "usuarios_id" });
     }
 
     return Post;

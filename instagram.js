@@ -8,9 +8,9 @@ const {Op} = require('sequelize');
 // //     console.table(resultado.map(user => user.toJSON()));
 // // });
 
-Usuario.findByPk(2).then((resultado) => {
-    console.table(resultado.toJSON());
-});
+// Usuario.findByPk(2).then((resultado) => {
+//     console.table(resultado.toJSON());
+// });
 
 // // Usuario.findOne(1).then((resultado) => {
 // //     console.table(resultado.toJSON());
@@ -87,12 +87,20 @@ Usuario.findByPk(2).then((resultado) => {
 //     console.table(resultado.map(user => user.toJSON()));
 // });
 
-Usuario.findByPK(1, {
-    include: [
-        { association: "posts"}
-    ]
-})
-.then((usuario) => {
-    console.table(usuario.posts.map((post) => post.toJSON()))
-})
+// Usuario.findByPK(1, {
+//     include: [
+//         { association: "posts"}
+//     ]
+// })
+// .then((usuario) => {
+//     console.table(usuario.posts.map((post) => post.toJSON()))
+// })
+
+Usuario.findByPk(1, {include:['posts']}).then(
+    usuario => {
+        console.log(usuario.toJSON());
+        sequelize.close();
+    }
+)
+  
 
